@@ -1,0 +1,27 @@
+<% if link.errors.any? %>
+  <ul>
+    <% link.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <%= form_for @link do |f| %>
+    <fieldset class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, :class => "form-control", :placeholder => "Link Title" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :user_id %>
+      <%= f.collection_select :user_id, User.order(:id),:id,:name, {include_blank: true}, {:class => "form-control"} %>
+    <fieldset class="form-group">
+      <%= f.label :thumbnail %>
+      <%= f.text_field :thumbnail, :class => "form-control", :placeholder => "Thumbnail URL" %>
+    </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :link %>
+      <%= f.text_field :link, :class => "form-control", :placeholder => "Post link URL here." %>
+    </fieldset>
+      <%= f.submit :class => "btn btn-primary submit-button" %>
+      <small class="text-muted">Please ensure all fields have been completed</small>
+  <% end %>

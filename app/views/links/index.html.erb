@@ -1,0 +1,27 @@
+<%= paginate @links %>
+  <% @links.each do |link| %>
+    <div class = "indexbody">
+      <p><%= link.votes %></p>
+      <p><%= button_to "Upvote", upvote_button_path %></p>  
+      <p><%= link_to link.title, upvote_path(id: link.id) %></p>
+      <div>
+        <%= image_tag link.thumbnail, class: "img-rounded" %>
+        <p><%= link.user.name %> </p>
+        <p>on</p>
+        <u><%= link.created_at %></u>
+      </div>
+        <button type="button" class="btn btn-xs">
+        <span class="glyphicon glyphicon-comment"></span>
+          Read Comments
+        </button>
+        <button type="button" class="btn btn-xs">
+          <span class="glyphicon glyphicon-download-alt"></span>
+          Read Later
+        </button>
+        <button type="button" class="btn btn-xs">
+          <span class="glyphicon glyphicon-envelope"></span>
+          Share This Post
+        </button>
+    </div>
+  <% end %>
+<%= paginate @links %>
