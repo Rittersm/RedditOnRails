@@ -2,7 +2,6 @@
   <% @links.each do |link| %>
     <div class = "indexbody">
       <p><%= link.votes %></p>
-      <p><%= button_to "Upvote", upvote_button_path %></p>  
       <p><%= link_to link.title, upvote_path(id: link.id) %></p>
       <div>
         <%= image_tag link.thumbnail, class: "img-rounded" %>
