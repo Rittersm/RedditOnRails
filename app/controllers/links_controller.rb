@@ -6,7 +6,7 @@ class LinksController < ApplicationController
   end
 
   def show
-    @page_title = @links.title
+    @page_title = @link.title
     @links = Link.all.detect{|link| link.id == params[:id].to_i}
   end
 
@@ -53,6 +53,13 @@ class LinksController < ApplicationController
   def upvote_button
     @link = Link.find(params[:id])
     @link.increment!(:votes)
+    redirect_to(:back)
+  end
+
+  def downvote_button
+    @link = Link.find(params[:id])
+    @link.decrement!(:votes)
+    redirect_to(:back)
   end
 
   private
