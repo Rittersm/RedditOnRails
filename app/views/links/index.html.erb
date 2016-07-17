@@ -1,5 +1,10 @@
-<div class="col-md-offset-1">
-  <%= paginate @links %>
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+    <%= paginate @links %>
+  </div>
+  <div class="col-md-2 col-md-offset-4 text-align-right">
+    <%= link_to "List of Subreddits", subreddits_path %>
+  </div>
 </div>
   <% @links.each do |link| %>
     <div class ="row">

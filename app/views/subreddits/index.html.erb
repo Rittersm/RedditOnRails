@@ -1,0 +1,8 @@
+<br>
+<% @subreddits.each do |subreddit| %>
+  <div class ="row">
+    <div class="col-md-11 col-md-offset-1">
+      <p><%= link_to subreddit.category, subreddit_path(id: subreddit.id) %> : <%= subreddit.description %></p>
+    </div>
+  </div>
+<% end %>
