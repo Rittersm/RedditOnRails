@@ -17,11 +17,11 @@
       </div>
       <div class="col-md-7 row link_info">
         <div class="col-md-12">
-          <p><%= link_to link.title, upvote_path(id: link.id) %></p>
+          <p><%= link_to link.title, upvote_path(id: link.id) %> in <%= link.subreddit.category %></p>
         </div>
         <div class="col-md-12">
           <p><%= (truncate(link.summary, length: 250, separator: " ")) %></p>
-        </div>  
+        </div>
         <div class="col-md-12">
           <p>Created by: <%= link.user.name %> on <%= link.created_at %></p>
         </div>

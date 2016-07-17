@@ -16,6 +16,11 @@
         <fieldset class="form-group">
           <%= f.label :user_id %>
           <%= f.collection_select :user_id, User.order(:id),:id,:name, {include_blank: true}, {:class => "form-control"} %>
+        </fieldset>
+        <fieldset class="form-group">
+          <%= f.label :subreddit_id %>
+          <%= f.collection_select :subreddit_id, Subreddit.order(:id),:id,:category, {include_blank: true}, {:class => "form-control"} %>
+        </fieldset>
         <fieldset class="form-group">
           <%= f.label :thumbnail %>
           <%= f.text_field :thumbnail, :class => "form-control", :placeholder => "Thumbnail URL" %>

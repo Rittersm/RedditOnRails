@@ -1,0 +1,26 @@
+<h2>Create New Subreddit</h2>
+
+<% if @subreddit.errors.any? %>
+  <ul>
+    <% @subreddit.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="row">
+  <div class="col-md-11 col-md-offset-1">
+    <%= form_for @subreddit do |f| %>
+      <fieldset class="form-group">
+        <%= f.label :category %>
+        <%= f.text_field :category, :class => "form-control", :placeholder => "Subreddit Name" %>
+      </fieldset>
+      <fieldset class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, :class => "form-control", :placeholder => "Subreddit description." %>
+      </fieldset>
+      <%= f.submit :class => "btn btn-primary submit-button" %>
+      <small class="text-muted">Please ensure all fields have been completed</small>
+    <% end %>
+  </div>
+</div>

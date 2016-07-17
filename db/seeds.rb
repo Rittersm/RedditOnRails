@@ -10,6 +10,10 @@ user = 100.times.map do
   User.create!(name: Faker::Superhero.name, email: Faker::Internet.safe_email)
 end
 
+subreddit = 20.times.map do
+  Subreddit.create!(category: Faker::Superhero.power, description: Faker::ChuckNorris.fact)
+end
+
 5000.times do
   Link.create!(
     title: Faker::Book.title,
@@ -17,6 +21,8 @@ end
     link: Faker::Internet.url,
     thumbnail: "https://unsplash.it/300/300?image=#{rand(1084)}",
     votes: 1 + rand(100000),
+    summary: Faker::ChuckNorris.fact,
+    subreddit: subreddit.sample,
     created_at: Faker::Date.between(3.years.ago, Date.today)
   )
 end
