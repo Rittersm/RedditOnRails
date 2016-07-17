@@ -18,7 +18,7 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     if @link.save
-      redirect_to @link
+      redirect_to root_path
     else
       render :new
     end
@@ -32,7 +32,7 @@ class LinksController < ApplicationController
   def update
     @link = Link.find(params[:id])
     if @link.update(post_params)
-      redirect_to @link
+      redirect_to root_path
     else
       render :edit
     end
@@ -65,7 +65,7 @@ class LinksController < ApplicationController
   private
 
     def link_params
-      params.require(:link).permit(:title, :user_id, :link, :thumbnail, :votes)
+      params.require(:link).permit(:title, :user_id, :link, :thumbnail, :votes, :summary)
     end
 
 end

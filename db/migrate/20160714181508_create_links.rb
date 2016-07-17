@@ -6,6 +6,7 @@ class CreateLinks < ActiveRecord::Migration
       t.string :link
       t.string :thumbnail
       t.integer :votes
+      t.string :summary
       t.datetime :created_at
 
       t.timestamps null: false

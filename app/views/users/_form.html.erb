@@ -6,16 +6,19 @@
 </ul>
 <% end %>
 
-<%= form_for @user do |f| %>
-  <fieldset class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, :class => "form-control", :placeholder => "Username" %>
-  </fieldset>
-  <fieldset class="form-group">
-    <%= f.label :email %>
-    <%= f.text_field :email, :class => "form-control", :placeholder => "Valid email address." %>
-  </fieldset>
-  <%= f.submit :class => "btn btn-primary submit-button" %>
-  <small class="text-muted">Please ensure all fields have been completed</small>
-<% end %>
+<div class="row">
+  <div class="col-md-11 col-md-offset-1">
+    <%= form_for @user do |f| %>
+      <fieldset class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, :class => "form-control", :placeholder => "Username" %>
+      </fieldset>
+      <fieldset class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, :class => "form-control", :placeholder => "Valid email address." %>
+      </fieldset>
+      <%= f.submit :class => "btn btn-primary submit-button" %>
+      <small class="text-muted">Please ensure all fields have been completed</small>
+    <% end %>
+  </div>
 </div>

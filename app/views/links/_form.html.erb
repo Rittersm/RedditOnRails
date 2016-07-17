@@ -6,22 +6,30 @@
   </ul>
   <% end %>
 
-  <%= form_for @link do |f| %>
-    <fieldset class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title, :class => "form-control", :placeholder => "Link Title" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <%= f.label :user_id %>
-      <%= f.collection_select :user_id, User.order(:id),:id,:name, {include_blank: true}, {:class => "form-control"} %>
-    <fieldset class="form-group">
-      <%= f.label :thumbnail %>
-      <%= f.text_field :thumbnail, :class => "form-control", :placeholder => "Thumbnail URL" %>
-    </fieldset>
-    <fieldset class="form-group">
-      <%= f.label :link %>
-      <%= f.text_field :link, :class => "form-control", :placeholder => "Post link URL here." %>
-    </fieldset>
-      <%= f.submit :class => "btn btn-primary submit-button" %>
-      <small class="text-muted">Please ensure all fields have been completed</small>
-  <% end %>
+  <div class="row">
+    <div class="col-md-11 col-md-offset-1">
+      <%= form_for @link do |f| %>
+        <fieldset class="form-group">
+          <%= f.label :title %>
+          <%= f.text_field :title, :class => "form-control", :placeholder => "Link Title" %>
+        </fieldset>
+        <fieldset class="form-group">
+          <%= f.label :user_id %>
+          <%= f.collection_select :user_id, User.order(:id),:id,:name, {include_blank: true}, {:class => "form-control"} %>
+        <fieldset class="form-group">
+          <%= f.label :thumbnail %>
+          <%= f.text_field :thumbnail, :class => "form-control", :placeholder => "Thumbnail URL" %>
+        </fieldset>
+        <fieldset class="form-group">
+          <%= f.label :link %>
+          <%= f.text_field :link, :class => "form-control", :placeholder => "Post link URL here." %>
+        </fieldset>
+        <fieldset class="form-group">
+          <%= f.label :summary %>
+          <%= f.text_area :summary, :class => "form-control", :placeholder => "Optional short summary here." %>
+        </fieldset>
+          <%= f.submit :class => "btn btn-primary submit-button" %>
+          <small class="text-muted">Please ensure all fields have been completed</small>
+      <% end %>
+    </div>
+  </div>

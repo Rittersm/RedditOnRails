@@ -7,9 +7,40 @@
 }
 
 .link_info {
-  margin-left: -150px;
 }
 
 .votes {
   margin: auto;
+}
+
+#header{
+  background-color: rgba(2, 106, 203, 0.81)
+}
+
+#snoo{
+  width: 50px;
+  display: inline;
+  margin: 10px;
+}
+
+#logo{
+
+  display: inline;
+}
+
+#logo a{
+  color: white;
+}
+
+header h5 a{
+  color: white;
+}
+
+#new_link{
+  display: inline;
+  margin-right: 10px;
+}
+
+#new_user{
+  display: inline;
 }

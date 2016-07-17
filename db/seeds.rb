@@ -10,7 +10,7 @@ user = 100.times.map do
   User.create!(name: Faker::Superhero.name, email: Faker::Internet.safe_email)
 end
 
-10000.times do
+5000.times do
   Link.create!(
     title: Faker::Book.title,
     user: user.sample,
