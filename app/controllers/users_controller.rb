@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def show
+    @users = User.all.detect{|user| user.id == params[:id].to_i}
+    @links = Link.where("user_id = ?", params[:id].to_i).order(votes: :desc).page(params[:page]).per(50)
+  end
+
   def new
     @page_title = "Register New User"
     @user = User.new

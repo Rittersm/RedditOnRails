@@ -28,7 +28,7 @@
           <p><%= (truncate(link.summary, length: 250, separator: " ")) %></p>
         </div>
         <div class="col-md-12">
-          <p>Created by: <%= link.user.name %> on <%= link.created_at %></p>
+          <p>Created by: <%= link_to link.user.name, user_path(id: link.user.id) %> on <%= link.created_at %></p>
         </div>
         <div class="col-md-12">
           <button type="button" class="btn btn-xs">
