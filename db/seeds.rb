@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 user = 100.times.map do
-  User.create!(name: Faker::Superhero.name, email: Faker::Internet.safe_email)
+  User.create!(name: Faker::Internet.user_name(nil, %w(_)), email: Faker::Internet.safe_email, password: "password")
 end
 
 subreddit = 20.times.map do

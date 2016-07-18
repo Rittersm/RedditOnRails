@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :require_user, except: [:show, :new, :create]
+
   def show
     @users = User.find_by(name: params[:id])
     @links = @users.links.order(votes: :desc).page(params[:page]).per(50)

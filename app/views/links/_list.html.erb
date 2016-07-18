@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-1">
+    <%= paginate @links %>
+  </div>
+  <div class="col-md-2 col-md-offset-3 text-align-right">
+    <%= link_to "List of Subreddits", subreddits_path %>
+  </div>
+</div>
+  <% @links.each do |link| %>
+    <div class ="row">
+      <div class ="col-md-1 col-md-offset-1">
+        <%= button_to upvote_button_path(id: link.id), :method => :get do %>
+            <span class = "btn btn-xs glyphicon glyphicon-arrow-up"></span>
+        <% end %>
+        <p class="votes"><%= link.votes %></p>
+        <%= button_to downvote_path(id: link.id), :method => :get do %>
+            <span class="btn btn-xs glyphicon glyphicon-arrow-down"></span>
+        <% end %>
+      </div>
+      <div class="col-md-2">
+        <%= image_tag link.thumbnail, class: "img-rounded img-responsive link_icon" %>
+      </div>
+      <div class="col-md-7 row link_info">
+        <div class="col-md-12">
+          <p><%= link_to link.title, upvote_path(id: link.id) %> in <%= link_to link.subreddit.category, subreddit_path(id: link.subreddit.id) %></p>
+        </div>
+        <div class="col-md-12">
+          <p><%= (truncate(link.summary, length: 250, separator: " ")) %></p>
+        </div>
+        <div class="col-md-12">
+          <p>Created by: <%= link_to link.user.name, link.user %> on <%= link.created_at %></p>
+        </div>
+        <div class="col-md-12">
+          <button type="button" class="btn btn-xs">
+          <span class="glyphicon glyphicon-comment"></span>
+            Read Comments
+          </button>
+          <button type="button" class="btn btn-xs">
+            <span class="glyphicon glyphicon-download-alt"></span>
+            Read Later
+          </button>
+          <button type="button" class="btn btn-xs">
+            <span class="glyphicon glyphicon-envelope"></span>
+            Share This Post
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+<div class="col-md-offset-1">
+  <%= paginate @links %>
+</div>
