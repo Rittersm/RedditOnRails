@@ -65,7 +65,7 @@ class LinksController < ApplicationController
   private
 
     def link_params
-      params.require(:link).permit(:title, :user_id, :link, :thumbnail, :votes, :summary)
+      params.require(:link).permit(:title, :user_id, :link, :thumbnail, :subreddit_id, :summary)
     end
 
 end
