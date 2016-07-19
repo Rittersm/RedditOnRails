@@ -9,12 +9,16 @@
   <% @links.each do |link| %>
     <div class ="row">
       <div class ="col-md-1 col-md-offset-1">
-        <%= button_to upvote_button_path(id: link.id), :method => :get do %>
-            <span class = "btn btn-xs glyphicon glyphicon-arrow-up"></span>
+        <% if current_user %>
+          <%= button_to upvote_button_path(id: link.id), :method => :get do %>
+              <span class = "btn btn-xs glyphicon glyphicon-arrow-up"></span>
+          <% end %>
         <% end %>
         <p class="votes"><%= link.votes %></p>
-        <%= button_to downvote_path(id: link.id), :method => :get do %>
-            <span class="btn btn-xs glyphicon glyphicon-arrow-down"></span>
+        <% if current_user %>
+          <%= button_to downvote_path(id: link.id), :method => :get do %>
+              <span class="btn btn-xs glyphicon glyphicon-arrow-down"></span>
+          <% end %>
         <% end %>
       </div>
       <div class="col-md-2">

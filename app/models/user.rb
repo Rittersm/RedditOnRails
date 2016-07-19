@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
     name
   end
 
+
 end
