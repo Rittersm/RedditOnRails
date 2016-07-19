@@ -5,7 +5,7 @@ class Link < ActiveRecord::Base
 
   validates :title, presence: true
   validates :user, presence: true
-  validates :link, presence: true
+  validates :link, presence: true, format: {:with => /\Ahttp:|https:\/\//}
   validates :thumbnail, presence: true
   validates :subreddit, presence: true
 
