@@ -7,13 +7,13 @@
   </div>
 </div>
   <% @links.each do |link| %>
-    <div class ="row">
+    <div class ="row" id="link_<%= link.id %>">
       <div class ="col-md-1 col-md-offset-1">
-        <%= button_to upvote_button_path(id: link.id), :method => :get do %>
+        <%= button_to upvote_button_path(id: link.id), :method => :get, remote: true do %>
             <span class = "btn btn-xs glyphicon glyphicon-arrow-up"></span>
         <% end %>
         <p class="votes"><%= link.votes %></p>
-        <%= button_to downvote_path(id: link.id), :method => :get do %>
+        <%= button_to downvote_path(id: link.id), :method => :get, remote: true do %>
             <span class="btn btn-xs glyphicon glyphicon-arrow-down"></span>
         <% end %>
       </div>

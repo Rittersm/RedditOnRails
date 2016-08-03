@@ -53,13 +53,14 @@ class LinksController < ApplicationController
   def upvote_button
     @link = Link.find(params[:id])
     @link.increment!(:votes)
-    redirect_to(:back)
+    render  :downvote
+
   end
 
   def downvote_button
     @link = Link.find(params[:id])
     @link.decrement!(:votes)
-    redirect_to(:back)
+
   end
 
   private
