@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :subreddits, only: [:new, :create, :index, :show]
   resources :links
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:create, :show]
 
   root 'links#index'
 
@@ -14,9 +14,13 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+     get 'signup' => 'users#new', as: :new_user
      get 'links/upvote/:id' => 'links#upvote', as: :upvote
      get 'links/upvote_button/:id' => 'links#upvote_button', as: :upvote_button
      get 'links/downvote_button/:id' => 'links#downvote_button', as: :downvote
+     get 'login' => 'user_sessions#new'
+     post 'login' => 'user_sessions#create'
+     delete 'logout' => 'user_sessions#destroy', as: :logout
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

@@ -1,5 +1,7 @@
 class SubredditsController < ApplicationController
 
+  before_action :require_user, except: [:index, :show]
+
   def index
     @page_title = "All Subreddits"
     @subreddits = Subreddit.all.order(category: :desc)
@@ -23,6 +25,8 @@ class SubredditsController < ApplicationController
       render :new
     end
   end
+
+  private
 
   def subreddit_params
     params.require(:subreddit).permit(:category, :description)

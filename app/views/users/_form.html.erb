@@ -17,6 +17,18 @@
         <%= f.label :email %>
         <%= f.text_field :email, :class => "form-control", :placeholder => "Valid email address." %>
       </fieldset>
+      <fieldset class="form-group">
+        <%= f.label :bio %>
+        <%= f.text_area :bio, :class => "form-control", :placeholder => "Optional Bio Information" %>
+      </fieldset>  
+      <fieldset class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+      </fieldset>
+      <fieldset class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Confirm Password" %>
+      </fieldset>
       <%= f.submit :class => "btn btn-primary submit-button" %>
       <small class="text-muted">Please ensure all fields have been completed</small>
     <% end %>
