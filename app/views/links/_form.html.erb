@@ -14,10 +14,6 @@
           <%= f.text_field :title, :class => "form-control", :placeholder => "Link Title" %>
         </fieldset>
         <fieldset class="form-group">
-          <%= f.label :user_id %>
-          <%= f.collection_select :user_id, User.order(:id),:id,:name, {include_blank: true}, {:class => "form-control"} %>
-        </fieldset>
-        <fieldset class="form-group">
           <%= f.label :subreddit_id %>
           <%= f.collection_select :subreddit_id, Subreddit.order(:id),:id,:category, {include_blank: true}, {:class => "form-control"} %>
         </fieldset>

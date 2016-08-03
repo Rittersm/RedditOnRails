@@ -1,5 +1,7 @@
 class LinksController < ApplicationController
 
+  before_action :require_user, except: [:index, :show]
+
   def index
     @page_title = "Main Page"
     @links = Link.all.order(votes: :desc).page(params[:page]).per(50)
@@ -15,7 +17,7 @@ class LinksController < ApplicationController
   end
 
   def create
-    @link = Link.new(link_params)
+    @link = current_user.links.new(link_params)
     if @link.save
       redirect_to root_path
     else
@@ -68,8 +70,8 @@ class LinksController < ApplicationController
       @link = Link.find(params[:id])
     end
 
-    def link_params
-      params.require(:link).permit(:title, :user_id, :link, :thumbnail, :votes, :summary)
-    end
+  def link_params
+    params.require(:link).permit(:title, :link, :thumbnail, :subreddit_id, :summary)
+  end
 
 end

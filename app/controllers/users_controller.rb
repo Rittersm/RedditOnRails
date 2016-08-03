@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
+  before_action :require_user, except: [:show, :new, :create]
+
   def show
-    @users = User.all.detect{|user| user.id == params[:id].to_i}
-    @links = Link.where("user_id = ?", params[:id].to_i).order(votes: :desc).page(params[:page]).per(50)
+    @users = User.find_by(name: params[:id])
+    @links = @users.links.order(votes: :desc).page(params[:page]).per(50)
   end
 
   def new
@@ -34,9 +36,10 @@ class UsersController < ApplicationController
   end
 
 
+  private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :bio, :password, :password_confirmation)
   end
 
 end
