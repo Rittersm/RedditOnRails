@@ -6,8 +6,7 @@ class LinksController < ApplicationController
   end
 
   def show
-    @page_title = @link.title
-    @links = Link.all.detect{|link| link.id == params[:id].to_i}
+    @links = Link
   end
 
   def new
@@ -64,6 +63,10 @@ class LinksController < ApplicationController
   end
 
   private
+
+    def set_link
+      @link = Link.find(params[:id])
+    end
 
     def link_params
       params.require(:link).permit(:title, :user_id, :link, :thumbnail, :votes, :summary)
