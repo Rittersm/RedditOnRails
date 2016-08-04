@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :links do
+    resources :comments
+  end
   resources :subreddits, only: [:new, :create, :index, :show]
-  resources :links
-  resources :users, only: [:create, :show]
+  resources :users, only: [:new, :create, :show]
 
   root 'links#index'
 
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-     get 'signup' => 'users#new', as: :new_user
+     get 'signup' => 'users#new'
      get 'links/upvote/:id' => 'links#upvote', as: :upvote
      get 'links/upvote_button/:id' => 'links#upvote_button', as: :upvote_button
      get 'links/downvote_button/:id' => 'links#downvote_button', as: :downvote

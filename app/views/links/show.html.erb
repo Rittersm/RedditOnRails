@@ -1,0 +1,43 @@
+</br>
+<div class ="row" id="link_<%= @link.id %>">
+  <div class ="col-md-1 col-md-offset-1">
+    <%= button_to upvote_button_path(id: @link.id), :method => :get, remote: true do %>
+        <span class = "btn btn-xs glyphicon glyphicon-arrow-up"></span>
+    <% end %>
+    <p class="votes"><%= @link.votes %></p>
+    <%= button_to downvote_path(id: @link.id), :method => :get, remote: true do %>
+        <span class="btn btn-xs glyphicon glyphicon-arrow-down"></span>
+    <% end %>
+  </div>
+  <div class="col-md-2">
+    <%= image_tag @link.thumbnail, class: "img-rounded img-responsive link_icon" %>
+  </div>
+  <div class="col-md-7 row link_info">
+    <div class="col-md-12">
+      <p><%= link_to @link.title, upvote_path(id: @link.id) %> in <%= link_to @link.subreddit.category, subreddit_path(id: @link.subreddit.id) %></p>
+    </div>
+    <div class="col-md-12">
+      <p><%= @link.summary %></p>
+    </div>
+    <div class="col-md-12">
+      <p>Created by: <%= link_to @link.user.name, @link.user %> on <%= link_to @link.created_at, @link  %></p>
+    </div>
+  </div>
+</div>
+<hr>
+</br>
+<div class="row">
+  <div class="col-md-8 col-md-offset-1">
+    <%= form_for [@link, @comment] do |f| %>
+      <fieldset class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body, :class => "form-control", :placeholder => "What do you think?" %>
+      </fieldset>
+      <%= f.submit :class => "btn btn-primary submit-button" %>
+    <% end %>
+  </div>
+</div>
+<hr />
+<div id="link_comments">
+  <%= render @link.comments %>
+</div>

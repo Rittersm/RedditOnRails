@@ -1,4 +1,4 @@
 <div class="row">
-  <h3 class="col-md-offset-1">Posts from <%= @subreddits.category %></h3>
+  <h3 class="col-md-offset-1">Posts from <%= @subreddit.category %></h3>
 </div>
-<%= render partial: "links/list", locals: {link: @link} %>
+<%= render @subreddit.links %>

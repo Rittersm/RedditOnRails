@@ -3,6 +3,6 @@
 </div>
 <div class="row">
   <p class="col-md-offset-1"><%= @users.bio %></p>
-</div>  
+</div>
 
-<%= render partial: "links/list", locals: {link: @link} %>
+<%= render @users.links %>

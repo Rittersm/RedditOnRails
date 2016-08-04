@@ -1,1 +1,12 @@
-<%= render "list" %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-1">
+    <%= paginate @links %>
+  </div>
+  <div class="col-md-2 col-md-offset-3 text-align-right">
+    <%= link_to "List of Subreddits", subreddits_path %>
+  </div>
+</div>
+  <%= render @links %>
+<div class="col-md-offset-1">
+  <%= paginate @links %>
+</div>

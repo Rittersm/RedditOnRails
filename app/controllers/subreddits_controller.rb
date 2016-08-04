@@ -8,8 +8,8 @@ class SubredditsController < ApplicationController
   end
 
   def show
-    @subreddits = Subreddit.all.detect{|subreddit| subreddit.id == params[:id].to_i}
-    @links = Link.where("subreddit_id = ?", params[:id].to_i).order(votes: :desc).page(params[:page]).per(50)
+    @subreddit = Subreddit.all.detect{|subreddit| subreddit.id == params[:id].to_i}
+    @links = @subreddit.links.page(params[:page]).per(50)
   end
 
   def new

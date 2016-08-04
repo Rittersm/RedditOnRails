@@ -1,15 +1,15 @@
 class LinksController < ApplicationController
 
   before_action :require_user, except: [:index, :show]
+  before_action :set_link, only: [:show]
 
   def index
     @page_title = "Main Page"
-    @links = Link.all.order(votes: :desc).page(params[:page]).per(50)
+    @links = Link.all.page(params[:page]).per(50)
   end
 
   def show
-    @page_title = @link.title
-    @links = Link.all.detect{|link| link.id == params[:id].to_i}
+    @comment = Comment.new
   end
 
   def new
@@ -55,16 +55,21 @@ class LinksController < ApplicationController
   def upvote_button
     @link = Link.find(params[:id])
     @link.increment!(:votes)
-    redirect_to(:back)
+    render :downvote
+
   end
 
   def downvote_button
     @link = Link.find(params[:id])
     @link.decrement!(:votes)
-    redirect_to(:back)
+    render :downvote
   end
 
   private
+
+    def set_link
+      @link = Link.find(params[:id])
+    end
 
   def link_params
     params.require(:link).permit(:title, :link, :thumbnail, :subreddit_id, :summary)

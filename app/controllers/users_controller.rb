@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @users = User.find_by(name: params[:id])
-    @links = @users.links.order(votes: :desc).page(params[:page]).per(50)
+    @links = @users.links.page(params[:page]).per(50)
   end
 
   def new
