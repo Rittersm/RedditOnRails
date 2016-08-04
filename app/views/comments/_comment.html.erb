@@ -1,0 +1,5 @@
+<div class="col-md-offset-1" id="comment_<%= comment.id %>">
+  <p><%= comment.body %></p>
+  <small>By: <%= comment.user.name %> on <%= link_to comment.created_at, link_comment_path(id: comment.id, link_id: comment.link.id) %></small>
+</div>
+<hr>

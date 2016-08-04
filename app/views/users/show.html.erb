@@ -5,4 +5,4 @@
   <p class="col-md-offset-1"><%= @users.bio %></p>
 </div>
 
-<%= render partial: "links/link", locals: {link: @link} %>
+<%= render @users.links %>

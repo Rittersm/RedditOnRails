@@ -1,14 +1,15 @@
 class LinksController < ApplicationController
 
   before_action :require_user, except: [:index, :show]
+  before_action :set_link, only: [:show]
 
   def index
     @page_title = "Main Page"
-    @links = Link.all.order(votes: :desc).page(params[:page]).per(50)
+    @links = Link.all.page(params[:page]).per(50)
   end
 
   def show
-    @links = Link
+    @comment = Comment.new
   end
 
   def new
@@ -54,14 +55,14 @@ class LinksController < ApplicationController
   def upvote_button
     @link = Link.find(params[:id])
     @link.increment!(:votes)
-    render  :downvote
+    render :downvote
 
   end
 
   def downvote_button
     @link = Link.find(params[:id])
     @link.decrement!(:votes)
-
+    render :downvote
   end
 
   private

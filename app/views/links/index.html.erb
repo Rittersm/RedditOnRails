@@ -6,9 +6,7 @@
     <%= link_to "List of Subreddits", subreddits_path %>
   </div>
 </div>
-  <% @links.each do |link| %>
-    <%= render partial: "link", locals: {link: @link} %>
-   <% end %>
+  <%= render @links %>
 <div class="col-md-offset-1">
   <%= paginate @links %>
 </div>

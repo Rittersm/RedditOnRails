@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'bootstrap-sass', '~> 3.2.0'
-
 gem 'kaminari'
-
 gem 'kaminari-bootstrap'
-
 gem 'faker'
+gem 'active_model_serializers', '~> 0.10.0'
 
 
 
